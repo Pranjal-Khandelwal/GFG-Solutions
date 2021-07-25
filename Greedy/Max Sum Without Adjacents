@@ -1,0 +1,23 @@
+Approach- (Greedy Solution)
+T.C-O(N)
+S.C-O(1)
+
+class Solution{
+public:	
+	// calculate the maximum sum with out adjacent
+	int findMaxSum(int *arr, int n) {
+	    // code here
+	    int include=arr[0];
+	    int exclude=0;
+	    
+	    int maximum;
+	    
+	    for(int i=1;i<n;i++)
+	    {
+	        maximum=max(include,exclude);
+	        include=exclude+arr[i];
+	        exclude=maxium;
+	    }
+	    return max(include,exclude);
+	    }
+};
