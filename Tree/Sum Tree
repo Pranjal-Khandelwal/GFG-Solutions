@@ -1,0 +1,29 @@
+class Solution
+{
+    public:
+    int  Sum(Node* root)
+    {
+        if(root==NULL)
+        return 0;
+        
+        return Sum(root->left)+root->data+Sum(root->right);
+    }
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+         
+         if(root==NULL || root->left==NULL && root->right==NULL)
+         return true;
+         
+         
+         
+         int l=Sum(root->left);
+         int r=Sum(root->right);
+         
+         
+         if((l+r==root->data) && isSumTree(root->left) &&  isSumTree(root->right) )
+         return true;
+         
+         return false;
+    }
+};
