@@ -1,0 +1,55 @@
+Approach-1(using Linear Search)
+T.C-O(N^2)
+S.C-O(1)
+
+
+class Solution{
+public:	
+	int matSearch (vector <vector <int>> &mat, int N, int M, int X)
+	{
+	    // your code here
+	    for(int i=0;i<N;i++)
+	    {
+	        for(int j=0;j<M;j++)
+	        {
+	            if(mat[i][j]==X)
+	            return 1;
+	        }
+	    }
+	    return 0;
+	}
+};
+
+
+Approach-2(Using Bianry Search)
+
+T.C.-O(M+N)
+S.C-O(1)
+
+
+class Solution{
+public:	
+	int matSearch (vector <vector <int>> &mat, int N, int M, int X)
+	{
+	    // your code here
+	  int i=0,j=M-1;
+   
+   while(i<N && j>=0)
+    {
+        if(mat[i][j]==X){
+        return 1;
+        i++;
+        j--;
+        }
+        else if(mat[i][j]<X)
+        {
+            i++;
+        }
+        else{
+            j--;
+        }
+    
+    }
+    return 0;
+	}
+};
