@@ -1,0 +1,23 @@
+int height(struct Node* root)
+{
+    if(root==NULL)
+    return 0;
+    
+    int leftheight=height(root->left);
+    int rightheight=height(root->right);
+    
+    return 1+max(leftheight,rightheight);
+}
+int diameter(struct Node* root) {
+    // code here
+    if(root==NULL)
+    return 0;
+    
+    int leftheight=height(root->left);
+    int rightheight=height(root->right);
+    
+    int leftDiameter=diameter(root->left);
+    int rightDiameter=diameter(root->right);
+    
+    return max(leftheight+rightheight+1,max(leftDiameter,rightDiameter));
+}
