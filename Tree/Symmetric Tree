@@ -1,0 +1,26 @@
+class Solution{
+    public:
+    // return true/false denoting whether the tree is Symmetric or not
+    
+    bool Symmetric(struct Node* left,struct Node* right)
+    {
+        if(!left && !right)
+        return true;
+        
+        if(!left || !right)
+        return false;
+        
+        if(left->data!=right->data)
+        return false;
+        
+        return Symmetric(left->left,right->right) && Symmetric(left->right,right->left);
+    }
+    bool isSymmetric(struct Node* root)
+    {
+	    // Code here
+	    if(!root)
+	    return true;
+	    
+	    return Symmetric(root->left,root->right);
+    }
+};
