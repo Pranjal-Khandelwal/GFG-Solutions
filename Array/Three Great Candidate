@@ -22,3 +22,24 @@ public:
         return res;
     }
 };
+
+Approach-2(Using Sorting)
+
+T.C-O(NLOGN)
+S.C-O(1)
+
+
+class Solution{   
+public:
+    long long maxProduct(int arr[], int n) {
+        // code here
+        if(n<=2)
+        return -1;
+        
+        sort(arr,arr+n);
+        
+        return max(arr[0]*arr[1]*arr[n-1],arr[n-1]*arr[n-2]*arr[n-3]);
+        
+    }
+};
+
