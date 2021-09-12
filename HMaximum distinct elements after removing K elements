@@ -1,0 +1,34 @@
+class Solution{
+    public:
+    int maxDistinctNum(int arr[], int n, int k)
+    {
+    	// Complete the function
+    	
+    	multiset<int>s;
+    
+    	
+    	for(int i=0;i<n;i++)
+    	{
+    	    if(s.find(arr[i])==s.end() || k==0){
+    	    s.insert(arr[i]);
+    	    }
+    	    else{
+    	        k--;
+    	    }
+    	    
+    	}
+    	
+    	set<int>st;
+    	
+    	if(k!=0)
+    	{
+    	    return s.size()-k;
+    	}
+    	else{
+    	   for(auto it:s){
+                st.insert(it);
+            }
+            return st.size();
+    	}
+    }
+};
