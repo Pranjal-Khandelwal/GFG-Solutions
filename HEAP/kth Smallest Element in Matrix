@@ -1,0 +1,24 @@
+int kthSmallest(int mat[MAX][MAX], int n, int k)
+{
+  //Your code here
+  auto cmp = [&](pair<int,int> a,pair<int,int> b){
+        return mat[a.first][a.second] > mat[b.first][b.second];
+    };
+    
+    priority_queue<pair<int,int>,vector<pair<int,int>>,decltype(cmp)> pq(cmp);
+  
+  for(int i=0;i<n;i++)
+  {
+      pq.push({i,0});
+  }
+  
+  for(int i=1;i<k;i++)
+  {
+      auto x=pq.top();
+      pq.pop();
+      
+      if(x.second+1<n) 
+      pq.push({x.first,x.second+1});
+  }
+  return mat[pq.top().first][pq.top().second];
+}
