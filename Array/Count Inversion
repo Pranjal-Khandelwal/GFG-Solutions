@@ -1,0 +1,22 @@
+Approach-1(Brute Force)
+T.C.-O(N^2)
+S.C.-O(1)
+
+long long int inversionCount(long long arr[], long long N)
+{
+    // Your Code Here
+    int count_inversion=0;
+    
+    for(int i=0;i<N;i++)
+    {
+        for(int j=i+1;j<N;j++)
+        {
+            if(arr[i]>arr[j])
+            {
+                count_inversion++;
+            }
+        }
+        
+    }
+    return count_inversion;
+}
