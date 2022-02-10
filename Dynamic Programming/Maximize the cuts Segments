@@ -1,0 +1,105 @@
+Approach-1(Recursive sol^n)
+T.C.-O(3^N)
+S.C.-O(N)
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    int maxCuts(int n,int x,int y,int z)
+    {
+        if(n==0)
+        return 0;
+        int value_1=INT_MIN,value_2=INT_MIN,value_3=INT_MIN;
+        if(x<=n)
+        value_1=maxCuts(n-x,x,y,z);
+        
+        if(y<=n)
+        value_2=maxCuts(n-y,x,y,z);
+        
+        if(z<=n)
+        value_3=maxCuts(n-z,x,y,z);
+        
+        return 1+max({value_1,value_2,value_3});
+        
+    }
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        //Your code here
+        int res=maxCuts(n,x,y,z);
+        
+        if(res<0)
+        return 0;
+        
+        return res;
+        
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    
+    //taking testcases
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        //taking length of line segment
+        int n;
+        cin >> n;
+        
+        //taking types of segments
+        int x,y,z;
+        cin>>x>>y>>z;
+        Solution obj;
+        //calling function maximizeTheCuts()
+        cout<<obj.maximizeTheCuts(n,x,y,z)<<endl;
+
+    }
+
+	return 0;
+} 
+
+Approach-(Using DP)
+T.C.-O(N)
+S.C.-O(N)
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    int dp[10005];
+    int maxCuts(int n,int x,int y,int z)
+    {
+        if(n==0)
+        return 0;
+        
+        if(dp[n]!=-1)
+        return dp[n];
+        
+        int value_1=INT_MIN,value_2=INT_MIN,value_3=INT_MIN;
+        if(x<=n)
+        value_1=maxCuts(n-x,x,y,z);
+        
+        if(y<=n)
+        value_2=maxCuts(n-y,x,y,z);
+        
+        if(z<=n)
+        value_3=maxCuts(n-z,x,y,z);
+        
+        return dp[n]=1+max({value_1,value_2,value_3});
+        
+    }
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        //Your code here
+        memset(dp,-1,sizeof(dp));
+        int res=maxCuts(n,x,y,z);
+        
+        if(res<0)
+        return 0;
+        
+        return res;
+        
+    }
+};
